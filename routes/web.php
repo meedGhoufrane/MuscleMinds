@@ -2,6 +2,8 @@
 
     use App\Http\Controllers\AuthController;
     use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\UserController;
+
 
     /*
     |--------------------------------------------------------------------------
@@ -15,8 +17,12 @@
     */
         
     Route::get('/', function () {
-        return view('admin.dashboard');
-    });
+        return view('welcome');
+    })->name('welcome');
+
+    Route::get('/supplement', function () {
+        return view('supplement');
+    })->name('supplement');
     
     Route::get('/login', [AuthController::class,'loginForm'])->name('login');
     Route::get('/register', [AuthController::class,'index'])->name('register');
@@ -33,3 +39,5 @@
 
     Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
     Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
+
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');

@@ -163,7 +163,7 @@
 
     <!--Copyright section-->
     <div class="bg-black/5 p-6 text-center">
-        <span>© 2023 Copyright:</span>
-        <a class="font-semibold" href="https://tw-elements.com/">TW Elements</a>
+        {{-- <span>© 2023 Copyright:</span> --}}
+        {{-- <a class="font-semibold" href="https://tw-elements.com/">TW Elements</a> --}}
     </div>
 </footer>

@@ -29,6 +29,7 @@
 
 
     <!-- Athletes Section -->
+
     <section class="py-20">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold mb-8 text-center relative">
@@ -66,6 +67,28 @@
             </div>
         </div>
     </section>
+
+    <section class="py-20">
+        <div class="container mx-auto flex justify-center">
+            <div class="flex items-center">
+                <!-- First div with an image -->
+                <div class="mr-10">
+                    <img src="{{ asset('images/raw-eaa-essential-amino-acids-powder-supplement.jpg') }}"
+                        alt="Your Image"
+                        class="w-20 h-20 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 ">
+                </div>
+                <!-- Second div with text -->
+                <div class="text-center">
+                    <h1 class="text-3xl font-bold text-gray-800">FROM THE GROUND <span class=""
+                            style="color: gold;"> UP</span>
+                    </h1>
+                    <p class="mt-4 text-lg text-gray-600">Muscle Minds Nutrition
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Featured Products Section -->
     <section class="py-16">
@@ -237,6 +260,8 @@
         </div>
     </section>
 
+    
+    
     @include('includes.footer')
 
 
