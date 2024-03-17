@@ -17,9 +17,9 @@
     */
         
     Route::get('/', function () {
-        return view('welcome');
-    })->name('welcome');
-
+        return view('admin.dashboard');
+    });
+    
     Route::get('/supplement', function () {
         return view('supplement');
     })->name('supplement');
