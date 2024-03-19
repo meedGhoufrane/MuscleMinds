@@ -55,6 +55,6 @@
     
 
     // for Category
-    Route::resource('categories', 'CategoryController');
+    Route::resource('categorys', 'CategoryController');
 
 

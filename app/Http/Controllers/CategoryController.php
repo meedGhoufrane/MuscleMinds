@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this->categoryRepository->all();
-        return view('categories.index', compact('categories'));
+        return view('category.index', compact('categories'));
     }
 
     // Implement other CRUD methods: create, store, edit, update, destroy
