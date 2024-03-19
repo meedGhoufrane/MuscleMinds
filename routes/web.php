@@ -54,3 +54,7 @@
     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
     
 
+    // for Category
+    Route::resource('categories', 'CategoryController');
+
+
