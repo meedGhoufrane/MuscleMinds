@@ -19,6 +19,12 @@
     Route::get('/', function () {
         return view('admin.dashboard');
     });
+
+         
+    // Route::get('/', function () {
+    //     return view('welcome');
+    // })->name('welcome');
+    
     
     Route::get('/supplement', function () {
         return view('supplement');
@@ -40,4 +46,11 @@
     Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
     Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
+
+  // for users 
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::delete('/users/{id}', [UserController::class, 'delete'])->name('users.delete');
+    Route::get('/users/{userId}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    
+
