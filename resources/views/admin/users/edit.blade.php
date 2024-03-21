@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<!--
-Template Name: NobleUI - HTML Bootstrap 5 Admin Dashboard Template
-Author: NobleUI
-Website: https://www.nobleui.com
-Portfolio: https://themeforest.net/user/nobleui/portfolio
-Contact: nobleui123@gmail.com
-Purchase: https://1.envato.market/nobleui_admin
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
+
 <html lang="en">
 
 @include('admin.includes.head')
@@ -52,7 +44,8 @@ License: For each use you must have a valid license purchased only from above li
 
 
                     <!-- Inside your edit.blade.php view -->
-                    <form action="{{ route('users.update', ['id' => $user->id]) }}" method="POST">
+                    <form action="{{ route('users.update', ['userId' => $user->id]) }}" method="POST">
+                        <!-- Form fields -->
                         @csrf
                         @method('PUT')
                         <div class="mb-3">

@@ -35,10 +35,14 @@ class UserController extends Controller
     }
 
     
-    public function update(int $userId, array $data)
+    public function update(Request $request, int $userId)
     {
+        $data = $request->all();
+
         $user = User::findOrFail($userId);
         $user->update($data);
+
         return redirect()->route('users.index')->with('success', 'User updated successfully');
     }
+
 }

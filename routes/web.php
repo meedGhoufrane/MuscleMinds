@@ -51,7 +51,7 @@
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::delete('/users/{id}', [UserController::class, 'delete'])->name('users.delete');
     Route::get('/users/{userId}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::put('/users/{userId}', 'UserController@update')->name('users.update');
     
 
     // for Category
