@@ -24,9 +24,10 @@ class UserController extends Controller
 
     public function delete(int $userId)
     {
-        User::findOrFail($userId)->delete();
+        $this->userRepository->delete($userId);
         return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
+
 
     public function edit($userId)
     {
@@ -37,12 +38,16 @@ class UserController extends Controller
     
     public function update(Request $request, int $userId)
     {
-        $data = $request->all();
-
-        $user = User::findOrFail($userId);
-        $user->update($data);
-
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $userId,
+            'password' => 'required|min:6',
+        ]);
+    
+        $this->userRepository->update($userId, $data);
+    
         return redirect()->route('users.index')->with('success', 'User updated successfully');
     }
+    
 
 }
