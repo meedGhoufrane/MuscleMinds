@@ -39,10 +39,13 @@
                     </button>
                 </div>
             </div>
-
+           
             <div class="row">
+                <div class="d-flex justify-content-end mb-3">
+                    <a href="{{ route('users.create') }}" class="btn btn-primary">Create User</a>
+                </div>
                 <div class="col-12 col-xl-12 stretch-card">
-
+                  
 
                     <table class="table">
                         <thead>
@@ -63,28 +66,20 @@
                                     <td>
                                         <a href="{{ route('users.edit', $user->id) }}"
                                             class="btn btn-primary btn-sm">Update</a>
-                                            
-                                    <form action="{{ route('users.delete', ['id' => $user->id]) }}" method="POST"
-                                        style="display: inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
+
+                                        <form action="{{ route('users.delete', ['id' => $user->id]) }}" method="POST"
+                                            style="display: inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-
-
-
-
                 </div>
             </div> <!-- row -->
-
-
-
-
         </div>
 
         <!-- partial:partials/_footer.html -->

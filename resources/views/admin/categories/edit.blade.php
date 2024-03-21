@@ -74,27 +74,15 @@
 
                     <!-- Inside your edit.blade.php view -->
                     <!-- Inside your edit.blade.php view -->
-                    <form method="POST" action="{{ route('users.update', ['userId' => $user->id]) }}">
+                    <form method="POST" action="{{ route('categories.update', ['category' => $category->id]) }}">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="full_name" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="full_name" name="name"
-                                value="{{ $user->name }}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email"
-                                value="{{ $user->email }}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Leave blank to keep unchanged">
+                            <label for="name" class="form-label">Name of category</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ $category->name }}" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
-
 
 
 

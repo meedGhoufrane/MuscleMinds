@@ -85,8 +85,7 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/login');
     }
-
-
+    
     public function forgotPassword(ForgotPasswordRequest $request)
     {
         $request->validate([
@@ -130,7 +129,5 @@ class AuthController extends Controller
     } else {
         return back()->withErrors(['email' => [__($status)]]);
     }
-}
-
-        
+}       
 }

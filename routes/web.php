@@ -3,6 +3,8 @@
     use App\Http\Controllers\AuthController;
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\UserController;
+    use App\Http\Controllers\CategoryController;
+
 
  
     /*
@@ -36,25 +38,34 @@
     Route::post('/login', [AuthController::class,'login'])->name('newlogin');
 
     Route::post('/logout', [AuthController::class,'logout'])->name('logout')->middleware('auth');
-
     Route::get('/dashboard', function () {return view('dashboard');})->middleware('auth');
-
     Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
     Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
-
-
     Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
     Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
 
-  // for users 
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::delete('/users/{id}', [UserController::class, 'delete'])->name('users.delete');
-    Route::get('/users/{userId}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{userId}', 'UserController@update')->name('users.update');
+
+
+    // for users 
+    Route::prefix('users')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('users.index');
+        Route::get('/create', [UserController::class, 'create'])->name('users.create');
+        Route::post('/', [UserController::class, 'store'])->name('users.store');
+        Route::delete('/{id}', [UserController::class, 'delete'])->name('users.delete');
+        Route::get('/{userId}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::put('/{userId}', [UserController::class, 'update'])->name('users.update');
+    });
+
     
 
     // for Category
-    Route::resource('categorys', 'CategoryController');
+    Route::prefix('categories')->group(function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('categories.index');
+        Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+        Route::put('/{category}', [CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    });
+    
 
 

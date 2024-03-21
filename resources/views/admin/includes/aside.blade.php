@@ -39,20 +39,36 @@
                   </div>
               </li>
               <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false"
+                    aria-controls="emails">
+                    <i class="link-icon" data-feather="mail"></i>
+                    <span class="link-title">manage categorys</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="emails">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('categories.index') }}" class="nav-link">All categorys</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+              <li class="nav-item">
                   <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false"
                       aria-controls="emails">
                       <i class="link-icon" data-feather="mail"></i>
-                      <span class="link-title">manage categorys</span>
+                      <span class="link-title">manage Products</span>
                       <i class="link-arrow" data-feather="chevron-down"></i>
                   </a>
                   <div class="collapse" id="emails">
                       <ul class="nav sub-menu">
                           <li class="nav-item">
-                              <a href="{{ route('categorys.index') }}" class="nav-link">All categorys</a>
+                              <a href="" class="nav-link">All Products</a>
                           </li>
                       </ul>
                   </div>
               </li>
+              
               <li class="nav-item">
                   <a href="pages/apps/chat.html" class="nav-link">
                       <i class="link-icon" data-feather="message-square"></i>

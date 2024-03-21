@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Repositories\UserRepositoryInterface;
 
 
+
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -22,12 +23,36 @@ class UserController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
+    // UserController.php
+
+    public function store(Request $request)
+    {
+        // Validate the incoming request data
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+        ]);
+
+        // Create the user using the UserRepository
+        $this->userRepository->create($data);
+
+        // Redirect back to the index page with a success message
+        return redirect()->route('users.index')->with('success', 'User created successfully');
+    }
+
+
+
     public function delete(int $userId)
     {
         $this->userRepository->delete($userId);
         return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
-
 
     public function edit($userId)
     {
@@ -40,7 +65,7 @@ class UserController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $userId,
+            'email' => 'required|email|unique:users,email,',
             'password' => 'required|min:6',
         ]);
     
