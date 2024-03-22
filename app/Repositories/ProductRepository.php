@@ -13,6 +13,13 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function create(array $data)
     {
+        // $data = [
+        //     'name' => 'Example Product',
+        //     'price' => 100,
+        //     'description' => 'Example description',
+        //     'stock' => 10,
+        //     'category_id' => 1, // Replace 1 with the actual ID of the category
+        // ];
         return Product::create($data);
     }
 

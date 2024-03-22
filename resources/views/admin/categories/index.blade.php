@@ -25,7 +25,6 @@ License: For each use you must have a valid license purchased only from above li
         <!-- partial in side dashboard -->
 
         <div class="page-content">
-
             <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
                 <div>
                     <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
@@ -47,7 +46,9 @@ License: For each use you must have a valid license purchased only from above li
                     </button>
                 </div>
             </div>
-
+            <div class="d-flex justify-content-end mb-3">
+                <a href="{{ route('categories.create') }}" class="btn btn-primary">Create category</a>
+            </div>
             <div class="row">
                 <div class="col-12 col-xl-12 stretch-card">
 

@@ -63,7 +63,7 @@
                   <div class="collapse" id="emails">
                       <ul class="nav sub-menu">
                           <li class="nav-item">
-                              <a href="" class="nav-link">All Products</a>
+                              <a href="{{ route('products.index') }}" class="nav-link">All Products</a>
                           </li>
                       </ul>
                   </div>

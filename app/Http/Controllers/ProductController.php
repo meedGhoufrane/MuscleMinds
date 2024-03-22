@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Repositories\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -17,32 +18,39 @@ class ProductController extends Controller
     public function index()
     {
         $products = $this->productRepository->getAll();
-        return view('products.index', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('admin.products.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'title' => 'required',
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
             'price' => 'required|numeric',
-            'description' => 'required',
             'stock' => 'required|integer',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'required|exists:categories,id', // Ensure the category ID exists in the categories table
+            'image' => 'nullable|image|max:4096', // Validate the image file
         ]);
 
+        // Check if an image is uploaded
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('images/products');
+            // Store the image and get its path
+            $imagePath = $request->file('image')->store('products', 'public');
+
+            // Add the image path to the validated data
+            $validatedData['image'] = $imagePath;
         }
 
-        $this->productRepository->create($data);
+        $this->productRepository->create($validatedData);
+
         return redirect()->route('products.index')->with('success', 'Product created successfully');
     }
-
     public function edit($id)
     {
         $product = $this->productRepository->find($id);
