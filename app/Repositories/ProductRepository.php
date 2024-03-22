@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Product;
+use App\Models\Category;
+
 
 class ProductRepository implements ProductRepositoryInterface
 {
@@ -39,5 +41,10 @@ class ProductRepository implements ProductRepositoryInterface
     {
         $product = $this->find($id);
         $product->delete();
+    }
+
+    public function getCategories()
+    {
+        return Category::all();
     }
 }

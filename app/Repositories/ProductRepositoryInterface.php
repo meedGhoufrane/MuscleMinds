@@ -13,4 +13,6 @@ interface ProductRepositoryInterface
     public function update(int $id, array $data);
 
     public function delete(int $id);
+    public function getCategories();
+
 }

@@ -54,26 +54,35 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = $this->productRepository->find($id);
-        return view('products.edit', compact('product'));
+        $categories = $this->productRepository->getCategories();
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'title' => 'required',
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
             'price' => 'required|numeric',
-            'description' => 'required',
             'stock' => 'required|integer',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'required|exists:categories,id', 
+            'image' => 'nullable|image|max:4096', 
         ]);
-
+    
+        // Check if an image is uploaded
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('images/products');
+            // Store the image and get its path
+            $imagePath = $request->file('image')->store('products', 'public');
+    
+            // Add the image path to the validated data
+            $validatedData['image'] = $imagePath;
         }
-
-        $this->productRepository->update($id, $data);
+    
+        $this->productRepository->update($id, $validatedData);
+    
         return redirect()->route('products.index')->with('success', 'Product updated successfully');
     }
+    
 
     public function destroy($id)
     {
