@@ -99,86 +99,19 @@
                 </h2>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Product Card -->
-                <div
-                    class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
-                    <img src="{{ asset('images/R5.webp') }}" alt="Product 1" class="w-full  object-cover">
+                <!-- Product Cards -->
+                @foreach ($products as $product)
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
+                    <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="w-full object-cover">
                     <div class="p-6">
-                        <h3 class="font-semibold text-xl mb-2">Product Name</h3>
-                        <p class="text-gray-700 mb-2">Product Description Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit.</p>
-                        <p class="text-gray-800 font-bold">$19.99</p>
-                        <button
-                            class="mt-4 bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-2 px-4 rounded-full uppercase font-semibold tracking-wide">Add
-                            to Cart</button>
+                        <h3 class="font-semibold text-xl mb-2">{{ $product->name }}</h3>
+                        <p class="text-gray-700 mb-2">{{ $product->description }}</p>
+                        <p class="text-gray-800 font-bold">${{ $product->price }}</p>
+                        <button class="mt-4 bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-2 px-4 rounded-full uppercase font-semibold tracking-wide">Add to Cart</button>
                     </div>
                 </div>
-                <div
-                    class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
-                    <img src="{{ asset('images/R5.webp') }}" alt="Product 1" class="w-full  object-cover">
-                    <div class="p-6">
-                        <h3 class="font-semibold text-xl mb-2">Product Name</h3>
-                        <p class="text-gray-700 mb-2">Product Description Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit.</p>
-                        <p class="text-gray-800 font-bold">$19.99</p>
-                        <button
-                            class="mt-4 bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-2 px-4 rounded-full uppercase font-semibold tracking-wide">Add
-                            to Cart</button>
-                    </div>
-                </div>
-                <div
-                    class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
-                    <img src="{{ asset('images/R5.webp') }}" alt="Product 1" class="w-full  object-cover">
-                    <div class="p-6">
-                        <h3 class="font-semibold text-xl mb-2">Product Name</h3>
-                        <p class="text-gray-700 mb-2">Product Description Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit.</p>
-                        <p class="text-gray-800 font-bold">$19.99</p>
-                        <button
-                            class="mt-4 bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-2 px-4 rounded-full uppercase font-semibold tracking-wide">Add
-                            to Cart</button>
-                    </div>
-                </div>
-                <div
-                    class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
-                    <img src="{{ asset('images/R5.webp') }}" alt="Product 1" class="w-full  object-cover">
-                    <div class="p-6">
-                        <h3 class="font-semibold text-xl mb-2">Product Name</h3>
-                        <p class="text-gray-700 mb-2">Product Description Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit.</p>
-                        <p class="text-gray-800 font-bold">$19.99</p>
-                        <button
-                            class="mt-4 bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-2 px-4 rounded-full uppercase font-semibold tracking-wide">Add
-                            to Cart</button>
-                    </div>
-                </div>
-                <div
-                    class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
-                    <img src="{{ asset('images/R5.webp') }}" alt="Product 1" class="w-full  object-cover">
-                    <div class="p-6">
-                        <h3 class="font-semibold text-xl mb-2">Product Name</h3>
-                        <p class="text-gray-700 mb-2">Product Description Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit.</p>
-                        <p class="text-gray-800 font-bold">$19.99</p>
-                        <button
-                            class="mt-4 bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-2 px-4 rounded-full uppercase font-semibold tracking-wide">Add
-                            to Cart</button>
-                    </div>
-                </div>
-                <div
-                    class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
-                    <img src="{{ asset('images/R5.webp') }}" alt="Product 1" class="w-full  object-cover">
-                    <div class="p-6">
-                        <h3 class="font-semibold text-xl mb-2">Product Name</h3>
-                        <p class="text-gray-700 mb-2">Product Description Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit.</p>
-                        <p class="text-gray-800 font-bold">$19.99</p>
-                        <button
-                            class="mt-4 bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-2 px-4 rounded-full uppercase font-semibold tracking-wide">Add
-                            to Cart</button>
-                    </div>
-                </div>
-                <!-- Repeat the above product card for each product -->
+                @endforeach
+                <!-- End Product Cards -->
             </div>
         </div>
     </section>

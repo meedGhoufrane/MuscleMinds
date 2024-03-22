@@ -68,12 +68,13 @@
                                     <td>{{ $product->description }}</td>
                                     <td>{{ $product->price }}</td>
                                     <td>
-                                        @if ($product->image && file_exists(public_path($product->image)))
-                                            <img src="{{ asset($product->image) }}" alt="Product Image" style="max-width: 100px;">
+                                        @if ($product->image && Storage::disk('public')->exists($product->image))
+                                            <img src="{{ Storage::url($product->image) }}" alt="Product Image" style="max-width: 100px;">
                                         @else
                                             <span class="text-danger">Image Not Found</span>
                                         @endif
                                     </td>
+                                    
                                     <td>{{ $product->stock }}</td>
                                     <td>{{ $product->category->name }}</td> <!-- Assuming you have a relationship with category -->
                                     <td>

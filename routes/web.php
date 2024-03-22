@@ -5,10 +5,8 @@
     use App\Http\Controllers\UserController;
     use App\Http\Controllers\CategoryController;
     use App\Http\Controllers\ProductController;
+    use App\Http\Controllers\WelcomeController;
 
-
-
- 
     /*
     |--------------------------------------------------------------------------
     | Web Routes
@@ -29,6 +27,8 @@
     //     return view('welcome');
     // })->name('welcome');
     
+    // Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
     
     Route::get('/supplement', function () {
         return view('supplement');
