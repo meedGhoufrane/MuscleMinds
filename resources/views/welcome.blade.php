@@ -1,8 +1,8 @@
 @include('includes.head')
 
-@include('includes.header')
 
 <body>
+    @include('includes.header')
 
     <section class="bg-gray-800 text-white py-40 relative">
         <div class="absolute inset-0 bg-gray-900 opacity-50"></div>
@@ -14,7 +14,7 @@
                 <p class="text-lg md:text-xl mb-10 text-black opacity-0 animate-fade-in-up animate-delay-1000">Your
                     ultimate destination for premium supplements</p>
 
-                <a href="#"
+                <a href="{{ route('supplement') }}"
                     class="bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-3 px-8 rounded-full uppercase font-semibold tracking-wide">Shop
                     Now</a>
             </div>

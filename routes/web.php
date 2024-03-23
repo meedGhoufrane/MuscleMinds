@@ -6,6 +6,9 @@
     use App\Http\Controllers\CategoryController;
     use App\Http\Controllers\ProductController;
     use App\Http\Controllers\WelcomeController;
+    use App\Http\Controllers\SupplementController;
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -18,21 +21,25 @@
     |
     */
         
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    });
+    // Route::get('/', function () {
+    //     return view('admin.dashboard');
+    // });
 
          
-    // Route::get('/', function () {
-    //     return view('welcome');
-    // })->name('welcome');
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('welcome');
     
-    // Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+    Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
+
+
+   // routes for view Athletes
+    Route::get('/athletes', function () {
+        return view('athletes');
+    })->name('athletes');
     
-    Route::get('/supplement', function () {
-        return view('supplement');
-    })->name('supplement');
+   
     
     Route::get('/login', [AuthController::class,'loginForm'])->name('login');
     Route::get('/register', [AuthController::class,'index'])->name('register');
@@ -82,3 +89,6 @@
         Route::put('/{product}', [ProductController::class, 'update'])->name('products.update');
         Route::delete('/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
     });
+
+
+    Route::get('/supplement', [SupplementController::class, 'index'])->name('supplement');
