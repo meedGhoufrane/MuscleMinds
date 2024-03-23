@@ -2,7 +2,7 @@
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-3 lg:py-4 dark:bg-gray-800">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
 
-            <a href="https://flowbite.com" class="flex items-center">
+            <a href="{{ route('welcome') }}" class="flex items-center">
                 <span class="self-center text-xl whitespace-nowrap">
                     <span class="font-bold italic" style="color: white;">Muscle</span>
                     <span class="font-semibold italic" style="color: gold;">Minds</span>
