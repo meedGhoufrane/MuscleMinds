@@ -31,7 +31,7 @@
     })->name('welcome');
     
     Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
-
+ 
 
 
    // routes for view Athletes
