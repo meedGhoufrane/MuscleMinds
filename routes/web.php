@@ -7,6 +7,7 @@
     use App\Http\Controllers\ProductController;
     use App\Http\Controllers\WelcomeController;
     use App\Http\Controllers\SupplementController;
+    use App\Http\Controllers\WishlistController;
 
 
 
@@ -92,3 +93,18 @@
 
 
     Route::get('/supplement', [SupplementController::class, 'index'])->name('supplement');
+
+
+
+    //for Wishlist
+
+    Route::get('/wishlist', function () {
+        return view('wishlist');
+    })->name('wishlist');
+    // Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+
+    // Route for adding a product to the wishlist
+    Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+    
+    // Route for removing a product from the wishlist
+    Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');

@@ -38,19 +38,29 @@
             <div class="w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- Loop through all products and create a card for each -->
                 @foreach ($products as $product)
-                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105 relative">
                     <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="w-full h-64 object-cover">
                     <!-- Adjust the 'h-64' class to set the desired height -->
+                    <div class="absolute top-0 right-0 p-2 flex flex-col items-center">
+                        <!-- Heart Icon for Add to Favorites -->
+                        <button class="text-red-500 hover:text-red-700">
+                            <i class="far fa-heart text-xl"></i>
+                        </button>
+                        <!-- Shopping Cart Icon for Add to Cart with shadow -->
+                        <button class="text-yellow-500 hover:text-yellow-700 shadow-md rounded-full p-2 mt-2">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                        </button>
+                    </div>
                     <div class="p-6">
                         <h3 class="font-semibold text-xl mb-2">{{ $product->name }}</h3>
                         <p class="text-gray-700 mb-2">{{ $product->description }}</p>
                         <p class="text-gray-800 font-bold">${{ $product->price }}</p>
-                        <button class="mt-4 bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-2 px-4 rounded-full uppercase font-semibold tracking-wide">Add to Cart</button>
                     </div>
                 </div>
                 @endforeach
-                
             </div>
+            
+            
             
         </div>
     </section>

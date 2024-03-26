@@ -9,7 +9,6 @@ $(document).ready(function() {
 
 
 
-{/* <script>
     document.addEventListener('DOMContentLoaded', function() {
         const dropdownToggle = document.querySelector('.hs-dropdown-toggle');
         const dropdownMenu = document.querySelector('.hs-dropdown-menu');
@@ -30,4 +29,3 @@ $(document).ready(function() {
             }
         });
     });
-</script> */}
