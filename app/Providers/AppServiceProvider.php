@@ -11,8 +11,9 @@ use App\Repositories\ProductRepositoryInterface;
 use App\Repositories\ProductRepository;
 use App\Repositories\WishlistRepositoryInterface;
 use App\Repositories\WishlistRepository;
-
-
+use App\View\Components\AppLayout;
+use App\View\Components\GuestLayout;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+      Blade::component('app-layout', AppLayout::class);
+      Blade::component('guest-layout', GuestLayout::class);
     }
 }

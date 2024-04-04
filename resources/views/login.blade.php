@@ -1,8 +1,6 @@
-@include('includes.head')
+<x-guest-layout>
 
 @include('includes.header')
-
-
 
 <section class="relative flex flex-wrap lg:h-screen lg:items-center">
     <div class="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
@@ -72,31 +70,4 @@
     <!-- Add a link for password reset -->
 
 </section>
-
-
-
-
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdownToggle = document.querySelector('.hs-dropdown-toggle');
-        const dropdownMenu = document.querySelector('.hs-dropdown-menu');
-
-        dropdownToggle.addEventListener('click', function() {
-            dropdownMenu.classList.toggle('hidden');
-            dropdownMenu.classList.toggle('opacity-0');
-        });
-
-        document.addEventListener('click', function(event) {
-            const isDropdownToggle = dropdownToggle.contains(event.target);
-            const isDropdownMenu = dropdownMenu.contains(event.target);
-
-            if (!isDropdownToggle && !isDropdownMenu) {
-                dropdownMenu.classList.add('hidden');
-                dropdownMenu.classList.remove('opacity-100');
-                dropdownMenu.classList.add('opacity-0');
-            }
-        });
-    });
-</script>
+</x-guest-layout>

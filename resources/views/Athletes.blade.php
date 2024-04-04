@@ -1,7 +1,5 @@
-@include('includes.head')
+<x-guest-layout>
 
-<body>
-    @include('includes.header')
 
     <h1 class="text-4xl font-bold text-center mt-8 mb-12">Meet Our Athletes </h1>
 
@@ -133,6 +131,5 @@
         </div>
     </div>
 
-    @include('includes.footer')
 
-</body>
+</x-guest-layout>

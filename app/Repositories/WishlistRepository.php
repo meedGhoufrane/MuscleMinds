@@ -16,7 +16,8 @@ class WishlistRepository implements WishlistRepositoryInterface
 
     public function allProductsInWishlist()
     {
-        $wishlist = $this->user->wishlist()->firstOrFail();
+        $userId = auth()->id(); 
+        $wishlist = Wishlist::where('user_id', $userId)->firstOrFail();
         return $wishlist->products;
     }
 

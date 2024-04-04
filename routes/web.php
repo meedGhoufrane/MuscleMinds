@@ -1,6 +1,7 @@
     <?php
 
     use App\Http\Controllers\AuthController;
+    use App\Http\Controllers\CartController;
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\UserController;
     use App\Http\Controllers\CategoryController;
@@ -97,14 +98,17 @@
 
 
     //for Wishlist
+// 
+    // Route::get('/wishlist', function () {
+    //     return view('wishlist');
+    // })->name('wishlist');
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+        Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+        Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
+    });
 
-    Route::get('/wishlist', function () {
-        return view('wishlist');
-    })->name('wishlist');
-    // Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
 
-    // Route for adding a product to the wishlist
-    Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
-    
-    // Route for removing a product from the wishlist
-    Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
+    // cart
+
+    Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
