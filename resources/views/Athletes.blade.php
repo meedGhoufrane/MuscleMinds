@@ -5,7 +5,7 @@
 
     <div class="flex justify-center items-center mb-12 ">
         <div class="w-3/4">
-            <!-- Sidebar Section -->
+            <!-- Sidebar Section --> 
             <aside class="w-1/4 mr-10">
                 <!-- Your sidebar content here -->
             </aside>
