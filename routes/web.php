@@ -12,6 +12,7 @@
 
 
 
+
     /*
     |--------------------------------------------------------------------------
     | Web Routes
@@ -111,4 +112,9 @@
 
     // cart
 
-    Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+
+    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+    
+
+    // single page product
+    Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');

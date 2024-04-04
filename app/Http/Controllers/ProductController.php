@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Repositories\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,12 @@ class ProductController extends Controller
         $products = $this->productRepository->getAll();
         return view('admin.products.index', compact('products'));
     }
+
+    public function show(Product $product)
+    {
+        return view('show', compact('product'));
+    }
+
 
     public function create()
     {

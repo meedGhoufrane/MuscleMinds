@@ -4,7 +4,7 @@
 @include('includes.head')
 <body>
     @include('includes.header')
-    <div class="min-h-screen bg-gray-100">
+    <div class="bg-gray-100">
         <main>
             {{ $slot }}
         </main>
