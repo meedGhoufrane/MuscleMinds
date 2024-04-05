@@ -1,52 +1,34 @@
 <?php
- namespace  App\Http\Controllers;
-use App\Http\Controllers\Controller;
-use App\Models\Wishlist;
+
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use App\Repositories\WishlistRepositoryInterface;
+use App\Models\Wishlist;
 
 class WishlistController extends Controller
 {
-    protected $wishlistRepository;
-
-    public function __construct(WishlistRepositoryInterface $wishlistRepository)
+    public function addToWishlist(Request $request)
     {
-        $this->wishlistRepository = $wishlistRepository;
-    }
+        // Validate the request
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+        ]);
+        
+        // Add the product to the wishlist
+        Wishlist::create([
+            'user_id' => auth()->id(),
+            'product_id' => $request->product_id,
+        ]);
 
+        // Provide feedback to the user
+        return response()->json(['success' => 'Product added to wishlist successfully']);
+    }
     public function index()
     {
-        $wishlistItems = $this->wishlistRepository->allProductsInWishlist();
-        return view('wishlist', compact('wishlistItems'));
-    }
-    
-    
+        // Retrieve all products in the user's wishlist
+        $wishlistProducts = Wishlist::where('user_id', auth()->id())->with('product')->get();
 
-    // Add a product to the wishlist
-   // Add a product to the wishlist
-// Add a product to the wishlist
-public function addToWishlist(int $userId, int $productId): bool
-{
-    try {
-        $wishlist = Wishlist::firstOrNew(['user_id' => $userId]);
-        $wishlist->products()->attach($productId);
-        return true; // Return true if product is successfully added to the wishlist
-    } catch (\Exception $e) {
-        // Log error if any
-        \Log::error('Failed to add product to wishlist: ' . $e->getMessage());
-        return false; // Return false if there's an error adding the product to the wishlist
+        // Pass the wishlist products to the view
+        return view('wishlist.index', compact('wishlistProducts'));
     }
-}
-
-
-    
-    public function removeFromWishlist(Request $request, $productId)
-    {
-        $userId = auth()->user()->id;
-    
-        $this->wishlistRepository->removeFromWishlist($userId, $productId);
-    
-        return response()->json(['message' => 'Product removed from wishlist successfully.']);
-    }
-    
 }

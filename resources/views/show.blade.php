@@ -9,22 +9,7 @@
                             <img class="w-full h-full object-cover" src="{{ Storage::url($product->image) }}"
                                 alt="{{ $product->name }}" alt="Product Image">
                         </div>
-                        <div class="flex -mx-2 mb-4">
-                            <div class="w-full px-2">
-                                <div class="flex items-center justify-between">
-                                    <button
-                                        class="dark:bg-gray-800  dark:text-white py-2 px-4 rounded-full font-bold hover:bg-yellow-600 dark:hover:bg-yellow-500 add-to-cart-btn"
-                                        data-product-id="{{ $product->id }}">Add to Cart</button>
 
-                                    <div class="flex items-center">
-                                        <span class="mr-2 font-semibold text-black dark:text-black">Quantity:</span>
-                                        <input type="number" min="1" value="1"
-                                            class="w-16 h-10 px-2 text-center border-gray-300 rounded-md dark:bg-gray-800 dark:text-white"
-                                            id="quantity-input">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="md:flex-1 px-4">
                         <h2 class="text-2xl font-bold text-black dark:text-black mb-2">{{ $product->name }}</h2>
@@ -49,6 +34,22 @@
                                 {{ $product->description }}
                             </p>
                         </div>
+                        <div class="flex -mx-2 mt-20">
+                            <div class="w-full px-2">
+                                <div class="flex items-center justify-between">
+                                    <button
+                                        class="dark:bg-gray-800  dark:text-white py-2 px-4 rounded-full font-bold hover:bg-yellow-600 dark:hover:bg-yellow-500 add-to-cart-btn"
+                                        data-product-id="{{ $product->id }}">Add to Cart</button>
+                                    <div class="flex items-center">
+                                        <span class="mr-2 font-semibold text-black dark:text-black">Quantity:</span>
+                                        <input type="number" min="1" value="1"
+                                            class="w-16 h-10 px-2 text-center border-gray-300 rounded-md dark:bg-gray-800 dark:text-white"
+                                            id="quantity-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>

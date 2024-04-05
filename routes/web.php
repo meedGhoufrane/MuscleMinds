@@ -99,21 +99,15 @@
 
 
     //for Wishlist
-// 
-    // Route::get('/wishlist', function () {
-    //     return view('wishlist');
-    // })->name('wishlist');
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
-        Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
-        Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
-    });
+    Route::get('/wishlist', 'WishlistController@index')->name('wishlist');
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+
 
 
     // cart
-
-
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware('auth');
+
     
 
     // single page product

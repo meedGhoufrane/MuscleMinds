@@ -1,7 +1,4 @@
 <x-guest-layout>
-
-
-
     <section class="py-20">
         <div class="container mx-auto flex">
             <!-- Product cards -->

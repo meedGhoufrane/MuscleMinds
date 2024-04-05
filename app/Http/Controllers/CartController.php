@@ -25,4 +25,14 @@ class CartController extends Controller
         return response()->json(['success' => 'Product added to cart successfully']);
     }
     
+
+    public function index()
+    {
+        $user_id = auth()->user()->id;
+        $cartItems = Cart::where('user_id', $user_id)->with('product')->get();
+        return view('cart.index', compact('cartItems'));
+    }
+
+    
+
 }

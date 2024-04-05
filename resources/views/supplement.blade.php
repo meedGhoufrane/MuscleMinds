@@ -81,7 +81,6 @@
         <!-- Include jQuery library -->
         <!-- Include jQuery library -->
 
-
         <script>
             $(document).ready(function() {
                 // Add click event handler to wishlist button
@@ -90,7 +89,7 @@
                     var productId = $(this).data('product-id');
                     addToWishlist(productId);
                 });
-
+        
                 // Function to make AJAX request to add product to wishlist
                 function addToWishlist(productId) {
                     $.ajax({
@@ -108,7 +107,8 @@
                                 icon: "success"
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.location.href = '{{ route('wishlist.index') }}';
+                                    // Redirect to the wishlist page or update the UI as needed
+                                    window.location.href = '{{ route('wishlist') }}';
                                 }
                             });
                         },
@@ -125,6 +125,7 @@
                 }
             });
         </script>
+        
 
         
 
