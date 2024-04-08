@@ -99,8 +99,8 @@
 
 
     //for Wishlist
-    Route::get('/wishlist', 'WishlistController@index')->name('wishlist');
-    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+    Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
 
 
 
@@ -112,3 +112,7 @@
 
     // single page product
     Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+
+
+    //filter 
+    Route::get('/products/filter', [SupplementController::class, 'filter'])->name('products.filter');

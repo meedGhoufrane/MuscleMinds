@@ -14,15 +14,16 @@
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                             <!-- Add options dynamically based on available categories -->
                             <option value="">All Categories</option>
-                            <option value="vitamins">Vitamins</option>
-                            <option value="minerals">Minerals</option>
-                            <!-- Add more options as needed -->
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
                     </div>
+                    
                     <div class="mb-6">
                         <!-- Filter by title -->
-                        <label for="title" class="block text-sm font-medium text-gray-700">Filter by Title:</label>
-                        <input type="text" name="title" id="title"
+                        <label for="title" class="block text-sm font-medium text-gray-700">Filter by name:</label>
+                        <input type="text" name="title" id="name"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                             placeholder="Enter title...">
                     </div>
@@ -35,9 +36,8 @@
                     </div>
                     <div>
                         <!-- Apply button -->
-                        <button type="button"
-                            class="py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Apply
-                            Filters</button>
+                        <button type="button" id="apply-filters"
+                            class="py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Apply Filters</button>
                     </div>
                 </aside>
                 <!-- Product cards -->
@@ -70,27 +70,57 @@
                     @endforeach
 
                 </div>
-
-
-
             </div>
         </section>
 
 
-
-        <!-- Include jQuery library -->
-        <!-- Include jQuery library -->
+        <script>
+            $(document).ready(function() {
+                // Function to fetch filtered products
+                function fetchFilteredProducts() {
+                    var categoryId = $('#category').val();
+                    var name = $('#name').val();
+                    var price = $('#price').val();
+    
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{ route('products.filter') }}',
+                        data: {
+                            'category_id': categoryId,
+                            'name': name,
+                            'price': price
+                        },
+                        success: function(response) {
+                            $('#product-list').html(response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                            // Show error message using Swal
+                            Swal.fire({
+                                title: "Error",
+                                text: "Failed to fetch filtered products",
+                                icon: "error"
+                            });
+                        }
+                    });
+                }
+    
+                // Add click event handler to Apply Filters button
+                $('#apply-filters').click(function() {
+                    fetchFilteredProducts();
+                });
+            });
+        </script>
+   
 
         <script>
             $(document).ready(function() {
-                // Add click event handler to wishlist button
                 $('.wishlist-btn').click(function(e) {
                     e.preventDefault();
                     var productId = $(this).data('product-id');
                     addToWishlist(productId);
                 });
         
-                // Function to make AJAX request to add product to wishlist
                 function addToWishlist(productId) {
                     $.ajax({
                         type: 'POST',
