@@ -14,7 +14,7 @@ class Wishlist extends Model
     // Define the relationship with the User model
 
     // Define the relationship with the Product model
-    public function products()
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }

@@ -4,8 +4,8 @@
             <!-- Product cards -->
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- Loop through all wishlist items and create a card for each -->
-                @if ($wishlistItems)
-                    @foreach ($wishlistItems as $item)
+                @if ($wishlistProducts)
+                    @foreach ($wishlistProducts as $item)
                         <div
                             class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105 relative">
                             {{-- <img src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" --}}

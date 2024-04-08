@@ -21,6 +21,6 @@ class WishlistController extends Controller
     {
         $wishlistProducts = Wishlist::where('user_id', auth()->id())->with('product')->get();
 
-        return view('wishlist.index', compact('wishlistProducts'));
+        return view('wishlist', compact('wishlistProducts'));
     }
 }

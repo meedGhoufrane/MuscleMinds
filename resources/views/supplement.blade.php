@@ -104,7 +104,7 @@
                         }
                     });
                 }
-    
+                
                 // Add click event handler to Apply Filters button
                 $('#apply-filters').click(function() {
                     fetchFilteredProducts();
