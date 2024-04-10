@@ -147,7 +147,7 @@
                             // Show error message using Swal
                             Swal.fire({
                                 title: "Error",
-                                text: "Failed to add product to wishlist",
+                                text: " Product already in wishlist",
                                 icon: "error"
                             });
                         }

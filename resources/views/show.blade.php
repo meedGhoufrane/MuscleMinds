@@ -89,7 +89,7 @@
                             // Show error message
                             Swal.fire({
                                 icon: 'error',
-                                title: 'Failed to add product to cart',
+                                title: 'Failed to add product to cart u should do login ',
                                 text: 'An error occurred while trying to add the product to the cart.'
                             });
                         }
