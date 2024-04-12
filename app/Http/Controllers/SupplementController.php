@@ -28,33 +28,32 @@ class SupplementController extends Controller
     
     public function filter(Request $request)
     {
-        // Retrieve filter parameters from the request
-        $categoryId = $request->input('category_id');
+        // Retrieve filter values from the request
+        $category = $request->input('category');
         $name = $request->input('name');
         $price = $request->input('price');
 
-        // Query builder for products
-        $productsQuery = Product::query();
+        // Query products table based on filter values
+        $query = Product::query();
 
-        // Filter by category if selected
-        if ($categoryId) {
-            $productsQuery->where('category_id', $categoryId);
+        if ($category) {
+            $query->where('category_id', $category);
         }
 
-        // Filter by name if provided
         if ($name) {
-            $productsQuery->where('name', 'like', '%' . $name . '%');
+            $query->where('name', 'like', '%' . $name . '%');
         }
 
-        // Filter by price if provided
         if ($price) {
-            $productsQuery->where('price', '<=', $price);
+            $query->where('price', '<=', $price);
         }
 
         // Retrieve filtered products
-        $products = $productsQuery->get();
+        $filteredProducts = $query->get();
 
-        // Pass the filtered products to the view
-        return view('filtered_products', ['products' => $products]);
+        // Return filtered products as JSON data
+        return response()->json($filteredProducts);
     }
+
+    
 }

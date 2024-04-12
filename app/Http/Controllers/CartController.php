@@ -33,6 +33,16 @@ class CartController extends Controller
         return view('cart.index', compact('cartItems'));
     }
 
-    
+    public function destroy($id)
+    {
+        // Find the cart item by ID
+        $cartItem = Cart::findOrFail($id);
+
+        // Delete the cart item
+        $cartItem->delete();
+
+        return response()->json(['message' => 'Product deleted from cart successfully']);
+    }
+
 
 }

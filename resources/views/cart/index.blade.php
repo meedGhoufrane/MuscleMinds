@@ -1,4 +1,5 @@
 <!-- resources/views/cart/index.blade.php -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <x-guest-layout>
 
@@ -46,51 +47,42 @@
                                         </div>
                                         <div class="hidden px-4 lg:block lg:w-2/12">
                                             <p class="text-lg font-bold text-red-500 dark:text-gray-400 product-price">
-                                                ${{ $cartItem->product->price }}</p>
+                                                ${{ $cartItem->product->price }}
+                                            </p>
                                         </div>
 
-                                        <div class="w-auto px-4 md:w-1/6 lg:w-2/12 ">
+                                        <div class="w-auto px-4 md:w-1/6 lg:w-2/12">
                                             <div
-                                                class="inline-flex items-center px-4 font-semibold text-gray-500 border border-gray-200 rounded-md dark:border-gray-700 ">
-                                                <button
-                                                    class="decrement-btn py-2 hover:text-gray-700 dark:text-gray-400"
-                                                    data-product-id="{{ $cartItem->id }}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                        height="16" fill="currentColor" class="bi bi-dash"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z">
-                                                        </path>
-                                                    </svg>
-                                                </button>
-                                                <input type="number"
-                                                    class="w-12 px-2 py-4 text-center border-0 rounded-md dark:bg-gray-800 bg-gray-50 dark:text-gray-400 quantity-input"
-                                                    data-product-id="{{ $cartItem->id }}"
-                                                    value="{{ $cartItem->quantity }}" readonly>
-                                                <button
-                                                    class="increment-btn py-2 hover:text-gray-700 dark:text-gray-400"
-                                                    data-product-id="{{ $cartItem->id }}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                        height="16" fill="currentColor" class="bi bi-plus"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
-                                                        </path>
-                                                    </svg>
-                                                </button>
+                                                class="flex items-center px-4 font-semibold text-gray-500 dark:border-gray-700">
+                                                <span class="quantity-display">{{ $cartItem->quantity }}</span>
                                             </div>
                                         </div>
+
                                         <div class="w-auto px-4 text-right md:w-1/6 lg:w-2/12">
                                             <p class="text-lg font-bold text-red-500 dark:text-gray-400 product-subtotal"
                                                 data-product-id="{{ $cartItem->id }}"
-                                                data-product-price="{{ $cartItem->price }}">
-                                                ${{ number_format($cartItem->price * $cartItem->quantity, 2) }}
+                                                data-product-price="{{ $cartItem->product->price }}">
+                                                ${{ number_format($cartItem->product->price * $cartItem->quantity, 2) }}
                                             </p>
                                         </div>
+
+                                        <div class="w-auto px-4 md:w-1/6 lg:w-2/12 flex items-center justify-end">
+                                            <button class="delete-btn text-red-500 dark:text-gray-400"
+                                                data-product-id="{{ $cartItem->id }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-trash" viewBox="0 0 448 512">
+                                                    <path fill="#ff0000"
+                                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                                                </svg>
+                                                
+                                            </button>
+                                        </div>
+
                                     </div>
                                 @endforeach
                             @endif
                         </div>
+
                     </div>
                     <div class="w-full px-4 xl:w-4/12">
                         <div class="p-6 border border-red-100 dark:bg-gray-900 dark:border-gray-900 bg-red-50 md:p-8">
@@ -137,6 +129,94 @@
             </div>
         </div>
     </section>
+
+    <script>
+        $(document).ready(function() {
+            $('.delete-btn').click(function() {
+                var productId = $(this).data('product-id');
+
+                // Send an AJAX request to delete the product from the cart
+                $.ajax({
+                    url: '/cart/' + productId,
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        // Reload the page after successful deletion
+                        window.location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        // Handle the error if any
+                    }
+                });
+
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            var quantity = parseInt($(this).val());
+            var price = parseFloat($('[data-product-id="' + productId + '"]').data('product-price'));
+
+            // Increment button click handler
+            $('.increment-btn').click(function() {
+                var productId = $(this).data('product-id');
+                var quantityInput = $('[data-product-id="' + productId + '"].quantity-input');
+                var currentQuantity = parseInt(quantityInput.val());
+                quantityInput.val(currentQuantity + 1).trigger(
+                    'input'); // Trigger input event after updating value
+            });
+
+            // Decrement button click handler
+            $('.decrement-btn').click(function() {
+                var productId = $(this).data('product-id');
+                var quantityInput = $('[data-product-id="' + productId + '"].quantity-input');
+                var currentQuantity = parseInt(quantityInput.val());
+                if (currentQuantity > 1) {
+                    quantityInput.val(currentQuantity - 1).trigger(
+                        'input'); // Trigger input event after updating value
+                }
+            });
+
+            // Quantity input change handler
+            $('.quantity-input').on('input', function() {
+                var productId = $(this).data('product-id');
+                var quantity = parseInt($(this).val());
+                var price = parseFloat($('[data-product-id="' + productId + '"]').data('product-price'));
+
+                console.log('Product ID:', productId);
+                console.log('Quantity:', quantity);
+                console.log('Price:', price);
+
+                var subtotal = price * quantity;
+                console.log('Subtotal:', subtotal);
+
+                // Update the subtotal display
+                $('[data-product-id="' + productId + '"].product-subtotal').text('$' + subtotal.toFixed(2));
+
+                // Send an AJAX request to update the quantity on the server-side
+                $.ajax({
+                    url: '/update-quantity/' + productId + '/' + quantity,
+                    method: 'POST',
+                    success: function(response) {
+                        console.log(response.message);
+                        // Optionally, you can perform any additional actions after successful update
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        // Handle the error if any
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
 
 
 

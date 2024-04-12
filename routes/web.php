@@ -2,6 +2,7 @@
 
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\CartController;
+    use App\Models\Product;
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\UserController;
     use App\Http\Controllers\CategoryController;
@@ -106,26 +107,25 @@
         Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
         Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
         Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
-
     });
 
 
 
     // cart
-    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')->middleware('auth');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware('auth');
+    Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 
+   
     
-
     // single page product
     Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
     Route::get('/profile/{product}', [ProfileController::class, 'show'])->name('products.showproduct');
 
 
     //filter 
-    Route::get('/products/filter', [SupplementController::class, 'filter'])->name('products.filter');
+    Route::get('/products/filter', [SupplementController::class, 'filter'])->name('filter');
 
 
     //profile 
-
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
