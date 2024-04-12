@@ -31,6 +31,7 @@
         </div>
     </section>
 
+    {{-- remove-from-wishlist-btn --}}
     <script>
         $(document).ready(function() {
             $('.remove-from-wishlist-btn').click(function(e) {
@@ -38,7 +39,6 @@
                 var productId = $(this).data('product-id');
                 removeFromWishlist(productId);
             });
-
             function removeFromWishlist(productId) {
                 $.ajax({
                     type: 'POST',

@@ -12,19 +12,25 @@
             <div class="flex items-center lg:order-2">
                 <div class="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 ">
                     <div class="relative">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                      </svg>
-                      <span class="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">3</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path
+                                d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                        </svg>
+                        <span
+                            class="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">3</span>
                     </div>
-                    <a   href="{{ route('cart.index') }}" class="text-sm font-medium text-white">Cart</a>
-                  </div>
-                  <div class="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                    <a href="{{ route('cart.index') }}" class="text-sm font-medium text-white">Cart</a>
+                </div>
+                <div class="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                            clip-rule="evenodd" />
                     </svg>
-                    <a  href="{{ route('wishlist') }}"  class="text-sm font-medium text-white ">Favorites</a>
-                  </div>
+                    <a href="{{ route('wishlist') }}" class="text-sm font-medium text-white ">Favorites</a>
+                </div>
                 @auth
                     <div>
                         {{-- ==================================================================== --}}
@@ -36,7 +42,7 @@
                                         class="w-8 h-8 rounded-full">
                                     <!-- Replace "profile_image.jpg" with the path to your profile image -->
                                     <p class=" w-7"> {{ auth()->user()->name }}</p>
-                                    
+
                                 </button>
 
                                 <div class="hs-dropdown-menu absolute hidden top-full left-0 z-10">
@@ -44,7 +50,7 @@
                                         class="bg-white shadow-md rounded-lg p-2 mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700">
                                         <div class="py-2 first:pt-0 last:pb-0">
                                             <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
-                                                href="#">
+                                                href="{{ route('profile') }}">
                                                 <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
                                                     width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -56,6 +62,7 @@
                                                 </svg>
                                                 Profile
                                             </a>
+
                                             <form action="{{ route('logout') }}" method="post">
                                                 @csrf
                                                 <button
@@ -117,7 +124,7 @@
                         <a href="{{ route('supplement') }}"
                             class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Supplement</a>
                     </li>
-                  
+
                     <li>
                         <a href="{{ route('athletes') }}"
                             class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Athletes</a>
@@ -125,7 +132,7 @@
                 </ul>
             </div>
 
-            
+
 
 
     </nav>

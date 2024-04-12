@@ -9,6 +9,8 @@
     use App\Http\Controllers\WelcomeController;
     use App\Http\Controllers\SupplementController;
     use App\Http\Controllers\WishlistController;
+    use App\Http\Controllers\ProfileController;
+
 
 
 
@@ -104,6 +106,7 @@
         Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
         Route::post('/wishlist/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
         Route::post('/wishlist/remove', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
+
     });
 
 
@@ -116,7 +119,13 @@
 
     // single page product
     Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+    Route::get('/profile/{product}', [ProfileController::class, 'show'])->name('products.showproduct');
 
 
     //filter 
     Route::get('/products/filter', [SupplementController::class, 'filter'])->name('products.filter');
+
+
+    //profile 
+
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
