@@ -215,6 +215,46 @@
         });
     </script>
 
+<script>
+    $(document).ready(function() {
+        // Function to calculate and display the order total
+        function calculateOrderTotal() {
+            var orderTotal = 0;
+            $('.product-subtotal').each(function() {
+                var subtotal = parseFloat($(this).text().replace('$', ''));
+                orderTotal += subtotal;
+            });
+            $('.order-total-display').text('$' + orderTotal.toFixed(2));
+        }
+
+        // Call the function initially to display the order total
+        calculateOrderTotal();
+
+        $('.delete-btn').click(function() {
+            var productId = $(this).data('product-id');
+
+            // Send an AJAX request to delete the product from the cart
+            $.ajax({
+                url: '/cart/' + productId,
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    // Reload the page after successful deletion
+                    window.location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    // Handle the error if any
+                }
+            });
+
+        });
+    });
+</script>
+
+
 
 
 
