@@ -89,7 +89,7 @@
                             <h2 class="mb-8 text-3xl font-bold text-gray-700 dark:text-gray-400">Order Summary</h2>
                             <div
                                 class="flex items-center justify-between pb-4 mb-4 border-b border-gray-300 dark:border-gray-700 ">
-                                <span class="text-gray-700 dark:text-gray-400">Subtotal</span>
+                                <span class="text-gray-700 dark:text-gray-400">Subtotals</span>
                                 <span
                                     class="text-xl font-bold text-gray-700 dark:text-gray-400 order-total-display"></span>
                             </div>

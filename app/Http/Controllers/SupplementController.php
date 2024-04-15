@@ -19,7 +19,7 @@ class SupplementController extends Controller
     public function index()
     {
         $categories = Category::all(); // Fetch all categories from the database
-        $products = $this->productRepository->getAll();
+        $products = Product::withCount('carts')->get();
         return view('supplement', ['products' => $products,'categories' => $categories]);
     }
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Cart;
+
 use App\Models\Product;
 use App\Repositories\ProductRepositoryInterface;
 use Illuminate\Http\Request;
@@ -27,6 +29,11 @@ class ProductController extends Controller
         return view('show', compact('product'));
     }
 
+
+    public function countAddToCart()
+    {
+        return Cart::where('product_id', $this->id)->count();
+    }
 
     public function create()
     {

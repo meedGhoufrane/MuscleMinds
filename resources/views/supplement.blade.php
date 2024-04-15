@@ -58,8 +58,11 @@
                             <!-- Shopping Cart Icon for Add to Cart with shadow -->
                             <a href="{{ route('products.show', $product) }}"
                                 class="text-yellow-500 hover:text-yellow-700 shadow-md rounded-full p-2 mt-2">
+                                <span class="text-yellow-500">{{ $product->carts_count }}</span>
                                 <i class="fas fa-shopping-cart text-xl"></i>
                             </a>
+                                
+                            
                         </div>
                         <div class="p-6">
                             <h3 class="font-semibold text-xl mb-2">{{ $product->name }}</h3>
