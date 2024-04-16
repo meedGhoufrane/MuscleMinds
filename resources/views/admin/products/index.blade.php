@@ -57,6 +57,7 @@
                                 <th>Image</th>
                                 <th>Stock</th>
                                 <th>Category</th>
+                                <th>Brand</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -77,6 +78,8 @@
                                     
                                     <td>{{ $product->stock }}</td>
                                     <td>{{ $product->category->name }}</td> <!-- Assuming you have a relationship with category -->
+                                    <td>{{ $product->brand->name }}</td>
+
                                     <td>
                                         <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                         <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline-block;">

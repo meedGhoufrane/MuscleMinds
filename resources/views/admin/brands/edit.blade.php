@@ -74,15 +74,16 @@
 
                     <!-- Inside your edit.blade.php view -->
                     <!-- Inside your edit.blade.php view -->
-                    <form method="POST" action="{{ route('categories.update', ['category' => $category->id]) }}">
+                    <form method="POST" action="{{ route('brands.update', ['brand' => $brand->id]) }}">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name of category</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{ $category->name }}" required>
+                            <label for="name" class="form-label">Name of brand</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ $brand->name }}" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
+                    
 
 
 

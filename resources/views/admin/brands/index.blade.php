@@ -47,7 +47,7 @@ License: For each use you must have a valid license purchased only from above li
                 </div>
             </div>
             <div class="d-flex justify-content-end mb-3">
-                <a href="{{ route('categories.create') }}" class="btn btn-primary">Create category</a>
+                <a href="{{ route('brands.create') }}" class="btn btn-primary">Create category</a>
             </div>
             <div class="row">
                 <div class="col-12 col-xl-12 stretch-card">
@@ -57,17 +57,17 @@ License: For each use you must have a valid license purchased only from above li
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name category</th>
+                                <th>Name brand</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
+                            @foreach ($brands as $brand)
                             <tr>
-                                <td>{{ $category->id }}</td>
-                                <td>{{ $category->name }}</td>
+                                <td>{{ $brand->id }}</td>
+                                <td>{{ $brand->name }}</td>
                                 <td>
-                                    <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary btn-sm">Update</a>
-                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
+                                    <a href="{{ route('brands.edit', $brand->id) }}" class="btn btn-primary btn-sm">Update</a>
+                                    <form action="{{ route('brands.destroy', $brand->id) }}" method="POST"
                                         style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')

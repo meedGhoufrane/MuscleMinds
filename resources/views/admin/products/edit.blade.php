@@ -71,6 +71,16 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="mb-3">
+                            <label for="brand" class="form-label">Brand</label>
+                            <select class="form-select" id="brand" name="brand_id" required>
+                                <option value="" selected disabled>Select brand</option>
+                                @foreach($brands as $brand)
+                                <option value="{{ $brand->id }}" {{ $product->brand_id == $brand->id ? 'selected' : '' }}>{{ $brand->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>

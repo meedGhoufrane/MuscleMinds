@@ -47,4 +47,9 @@ class ProductRepository implements ProductRepositoryInterface
     {
         return Category::all();
     }
+
+    public function getAllWithBrand()
+    {
+        return Product::with('brand')->get();
+    }
 }

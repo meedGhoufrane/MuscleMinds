@@ -112,32 +112,32 @@
 
 
     <!-- Featured Products Section -->
-    <section class="py-16">
-        <div class="container mx-auto border">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold mb-8 text-center relative">
-                    <span class="inline-block pb-2 border-b-4 border-yellow-500">Featured Products</span>
-                </h2>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Product Cards -->
-                @foreach ($products as $product)
-                    <div
-                        class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
-                        <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}"
-                            class="w-full object-cover">
-                        <div class="p-6">
-                            <h3 class="font-semibold text-xl mb-2">{{ $product->name }}</h3>
-                            <p class="text-gray-700 mb-2">{{ $product->description }}</p>
-                            <p class="text-gray-800 font-bold">${{ $product->price }}</p>
+        <section class="py-16">
+            <div class="container mx-auto border">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-8 text-center relative">
+                        <span class="inline-block pb-2 border-b-4 border-yellow-500">Featured Products</span>
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Product Cards -->
+                    @foreach ($products as $product)
+                        <div
+                            class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
+                            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}"
+                                class="w-full object-cover">
+                            <div class="p-6">
+                                <h3 class="font-semibold text-xl mb-2">{{ $product->name }}</h3>
+                                <p class="text-gray-700 mb-2">{{ $product->description }}</p>
+                                <p class="text-gray-800 font-bold">${{ $product->price }}</p>
 
+                            </div>
                         </div>
-                    </div>
-                @endforeach
-                <!-- End Product Cards -->
+                    @endforeach
+                    <!-- End Product Cards -->
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 
     <!-- Why Choose MuscleMinds Section -->

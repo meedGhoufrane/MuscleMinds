@@ -15,7 +15,8 @@ class Product extends Model
         'description',
         'stock',
         'image',
-        'category_id', 
+        'category_id',
+        'brand_id'
     ];
     public function category()
     {
@@ -25,6 +26,11 @@ class Product extends Model
     public function carts()
     {
         return $this->hasMany(Cart::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
     }
    
 }

@@ -1,14 +1,13 @@
     <?php
 
     use App\Http\Controllers\AuthController;
+    use App\Http\Controllers\BrandController;
     use App\Http\Controllers\CartController;
-    use App\Models\Product;
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\UserController;
     use App\Http\Controllers\CategoryController;
     use App\Http\Controllers\ProductController;
     use App\Http\Controllers\WelcomeController;
-    
     use App\Http\Controllers\SupplementController;
     use App\Http\Controllers\WishlistController;
     use App\Http\Controllers\ProfileController;
@@ -98,6 +97,17 @@
         Route::put('/{product}', [ProductController::class, 'update'])->name('products.update');
         Route::delete('/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
     });
+
+    // for brand
+    Route::prefix('brands')->group(function () {
+        Route::get('/', [BrandController::class, 'index'])->name('brands.index');
+        Route::get('/create', [BrandController::class, 'create'])->name('brands.create');
+        Route::post('/', [BrandController::class, 'store'])->name('brands.store');
+        Route::get('/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit');
+        Route::put('/{brand}', [BrandController::class, 'update'])->name('brands.update');
+        Route::delete('/{brand}', [BrandController::class, 'destroy'])->name('brands.destroy');
+    });
+
 
 
     Route::get('/supplement', [SupplementController::class, 'index'])->name('supplement');
