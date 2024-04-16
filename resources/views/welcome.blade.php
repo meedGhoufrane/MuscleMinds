@@ -1,25 +1,53 @@
 <x-guest-layout>
 
-
-
-    <section class="bg-gray-800 text-white py-40 relative">
-        <div class="absolute inset-0 bg-gray-900 opacity-50"></div>
-        <div class="container mx-auto text-center relative z-10">
-            <div class="max-w-4xl mx-auto">
-                <h1
-                    class="text-5xl md:text-7xl font-bold mb-8 text-black opacity-0 animate-fade-in-up animate-delay-500">
-                    Welcome to MuscleMinds</h1>
-                <p class="text-lg md:text-xl mb-10 text-black opacity-0 animate-fade-in-up animate-delay-1000">Your
-                    ultimate destination for premium supplements</p>
-
-                <a href="{{ route('supplement') }}"
-                    class="bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-3 px-8 rounded-full uppercase font-semibold tracking-wide">Shop
-                    Now</a>
-            </div>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<section class="bg-gray-800 text-white relative">
+    <!-- Swiper Container -->   
+    <div class="swiper-container" style="width: 100%; height: 100%;">
+        <!-- Swiper Wrapper -->
+        <div class="swiper-wrapper" id="swiper-wrapper">
+            <!-- Swiper will dynamically populate this section -->
+            <div class="swiper-slide"><img src="{{ asset('images/raw-nutrition-2023.webp') }}" alt="Raw Nutrition" class="w-full  object-cover swiper-image" style="height: 53rem"></div>
+            <div class="swiper-slide"><img src="{{ asset('images/product-jpeg.jpg') }}" alt="Product JPEG" class="w-full  object-cover swiper-image "  style="height: 53rem"></div>
+            <div class="swiper-slide"><img src="{{ asset('images/all-new-muscletech.jpg') }}" alt="All New Muscletech"  class=" w-full  object-cover swiper-image" style="height: 53rem"></div>
         </div>
-        <div class="absolute inset-0 bg-cover bg-center"
-            style="background-image: url({{ asset('images/raw-nutrition-2023.webp') }});"></div>
-    </section>
+        <!-- Add Pagination -->
+    </div>
+
+    <!-- Shop Now Button -->
+    <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <a href="{{ route('supplement') }}" class="bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-3 px-8 rounded-full uppercase font-semibold tracking-wide">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Include Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'fade',
+            autoplay: {
+                delay: 2000, // Change slide every 2 seconds
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            loop: false // Disable looping
+        });
+    });
+</script>
+
+
+
+    
+    
+    
+
 
 
     <!-- Athletes Section -->
@@ -66,9 +94,8 @@
         <div class="container mx-auto flex justify-center">
             <div class="flex items-center">
                 <!-- First div with an image -->
-                <div class="mr-10">
-                    <img src="{{ asset('images/raw-eaa-essential-amino-acids-powder-supplement.jpg') }}"
-                        alt="Your Image"
+                <div class="mr-10" >
+                    <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }} " style="border-radius: 40%"
                         class="w-20 h-20 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 ">
                 </div>
                 <!-- Second div with text -->
@@ -76,12 +103,12 @@
                     <h1 class="text-3xl font-bold text-gray-800">FROM THE GROUND <span class=""
                             style="color: gold;"> UP</span>
                     </h1>
-                    <p class="mt-4 text-lg text-gray-600">Muscle Minds Nutrition
-                    </p>
+                    <p class="mt-4 text-lg text-gray-600">{{ $product->name }}</p>
                 </div>
             </div>
         </div>
     </section>
+    
 
 
     <!-- Featured Products Section -->
@@ -103,9 +130,7 @@
                             <h3 class="font-semibold text-xl mb-2">{{ $product->name }}</h3>
                             <p class="text-gray-700 mb-2">{{ $product->description }}</p>
                             <p class="text-gray-800 font-bold">${{ $product->price }}</p>
-                            <button 
-                                class="mt-4 bg-yellow-500 text-gray-900 hover:bg-yellow-600 py-2 px-4 rounded-full uppercase font-semibold tracking-wide">Add
-                                to Cart</button>
+
                         </div>
                     </div>
                 @endforeach
@@ -140,13 +165,13 @@
                     <p class="ml-2">Easy Returns</p>
                 </div>
                 <div class="flex items-center">
-                    <svg class="w-12 h-12 text-gray-600 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-12 h-12 text-gray-600 transform rotate-180" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M16 17l-4 4m0 0l-4-4m4 4V3"></path>
                     </svg>
                     <p class="ml-2">Quality Products</p>
-                </div>                
+                </div>
             </div>
         </div>
     </section>
@@ -188,6 +213,10 @@
             </div>
         </div>
     </section>
+
+    
+    
+
 
 
 
