@@ -39,6 +39,7 @@
     })->name('welcome');
     
     Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
  
 
 
