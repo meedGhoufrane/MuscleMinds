@@ -3,6 +3,7 @@
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\BrandController;
     use App\Http\Controllers\CartController;
+    use App\Http\Controllers\StripeController;
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\UserController;
     use App\Http\Controllers\CategoryController;
@@ -139,7 +140,16 @@
 
     //filter 
     Route::get('/products/filter', [SupplementController::class, 'filter'])->name('filter');
-
+    
 
     //profile 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+
+
+    //checkout
+
+    // Route::get('/stripe/checkout', [StripeController::class, 'checkout'])->name('stripe.checkout');
+
+    Route::get('/checkout', 'App\Http\Controllers\StripeController@checkout')->name('checkout');
+    Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
+    Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');

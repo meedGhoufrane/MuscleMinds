@@ -28,4 +28,9 @@ class Cart extends Model
     {
         return $this->belongsTo(Product::class, 'product_id');
     }
+
+    public function order()
+    {
+        return $this->hasOne(Order::class);
+    }
 }
