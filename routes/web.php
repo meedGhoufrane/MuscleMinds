@@ -10,7 +10,7 @@
     use App\Http\Controllers\ProductController;
     use App\Http\Controllers\WelcomeController;
     use App\Http\Controllers\SupplementController;
-    use App\Http\Controllers\WishlistController;
+    use App\Http\Controllers\WishlistController; 
     use App\Http\Controllers\ProfileController;
 
 
