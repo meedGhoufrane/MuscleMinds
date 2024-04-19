@@ -17,13 +17,10 @@ class StripeController extends Controller
 
     $totalPrice = $request->get('orderTotal');
 
-    // Convert the total price to cents (assuming USD currency)
     $orderTotalInCents = intval($totalPrice * 100);
 
-    // Retrieve the cart items from the session
     $cartItems = $request->session()->get('cart');
 
-    // Check if there are any cart items
     if (!empty($cartItems)) {
         // Loop through each cart item
         foreach ($cartItems as $cartItem) {

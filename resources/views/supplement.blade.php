@@ -30,13 +30,66 @@
                 <div class="mb-6">
                     <!-- Filter by price -->
                     <label for="price" class="block text-sm font-medium text-gray-700">Filter by Price:</label>
-                    <input type="number" name="price" id="price"
+                    <input type="number" name="price" id="price" min="0"
                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         placeholder="Enter max price...">
                 </div>
+                <script>
+                    
+                    document.addEventListener('DOMContentLoaded', function() {
+                        searchProduct();
+                    });
+                    
+                    function searchProduct() {
+                        const category = document.getElementById('category').value;
+                        const name = document.getElementById('name').value;
+                        const price = document.getElementById('price').value;
+                        // Send an AJAX request to the server to filter products
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', '/filter?category=' + category + '&name=' + name + '&price=' + price);
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+                                    var response = JSON.parse(xhr.responseText);
+                                    // Update the product cards with the filtered products
+                                    var grid = document.querySelector('.grid');
+                                    grid.innerHTML = '';
+                                    console.log(response);
+                                    response.forEach(function(product) {
+
+                                        var card = `
+                            <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105 relative">
+                                <img src="http://127.0.0.1:8000/storage/${product.image}" alt="${product.name}" class="w-full h-64 object-cover">
+                                <div class="absolute top-0 right-0 p-2 flex flex-col items-center">
+                                    <button class="wishlist-btn text-red-500 hover:text-red-700" data-product-id="${product.id}" onClick="addTowich(${product.id})">
+                                        <i class="far fa-heart text-xl"></i>
+                                    </button>
+                                    <a href="http://127.0.0.1:8000/products/${product.id}" class="text-yellow-500 hover:text-yellow-700 shadow-md rounded-full p-2 mt-2 view-product-btn"
+                                        >
+                                        <i class="fas fa-shopping-cart text-xl"></i>
+                                    </a>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-semibold text-xl mb-2">${product.name}</h3>
+                                    <p class="text-gray-700 mb-2">${product.description}</p>
+                                    <p class="text-gray-800 font-bold">$${product.price}</p>
+                                </div>
+                            </div>
+                        `;
+                                        grid.insertAdjacentHTML('beforeend', card);
+                                    });
+                                } else {
+                                    console.error('Error:', xhr.status);
+                                    // Show error message using Swal or any other method
+                                }
+                            }
+                        };
+                        xhr.send();
+                    }
+                </script>
                 <div>
                     <!-- Apply button -->
-                    <button type="button" id="apply-filters"
+                    <button type="button" id="apply-filters" onclick="searchProduct()"
                         class="py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Apply Filters</button>
                 </div>
             </aside>
@@ -74,73 +127,14 @@
         </div>
     </section>
 
-    <script>
-        $(document).ready(function() {
-            $('#apply-filters').click(function() {
-                // Get the values of category, name, and price inputs
-                var category = $('#category').val();
-                var name = $('#name').val();
-                var price = $('#price').val();
-                
-                // Call the applyFilters function with the retrieved values
-                applyFilters(category, name, price);
-            });
-    
-            function applyFilters(category, name, price) {
-                // Send an AJAX request to the server to filter products
-                $.ajax({
-                    type: 'GET',
-                    url: '{{ route('filter') }}',
-                    data: {
-                        'category': category,
-                        'name': name,
-                        'price': price
-                    },
-                    success: function(response) {
-                        // Update the product cards with the filtered products
-                        $('.grid').empty();
-                        response.forEach(function(product) {
-                            var card = `
-                                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105 relative">
-                                    <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover">
-                                    <div class="absolute top-0 right-0 p-2 flex flex-col items-center">
-                                        <button class="wishlist-btn text-red-500 hover:text-red-700" data-product-id="${product.id}">
-                                            <i class="far fa-heart text-xl"></i>
-                                        </button>
-                                        <a href="#" class="text-yellow-500 hover:text-yellow-700 shadow-md rounded-full p-2 mt-2 view-product-btn"
-                                            data-product-id="{{ $product->id }}">
-                                            <i class="fas fa-shopping-cart text-xl"></i>
-                                        </a>
-                                    </div>
-                                    <div class="p-6">
-                                        <h3 class="font-semibold text-xl mb-2">${product.name}</h3>
-                                        <p class="text-gray-700 mb-2">${product.description}</p>
-                                        <p class="text-gray-800 font-bold">$${product.price}</p>
-                                    </div>
-                                </div>
-                            `;
-                            $('.grid').append(card);
-                        });
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(error);
-                        // Show error message using Swal or any other method
-                    }
-                });
-            }
-        });
-    </script>
-    
+
 
 
 
     <script>
-        $(document).ready(function() {
-            $('.wishlist-btn').click(function(e) {
-                e.preventDefault();
-                var productId = $(this).data('product-id');
+            function addTowich(productId){
                 addToWishlist(productId);
-            });
+            }
 
             function addToWishlist(productId) {
                 $.ajax({
@@ -174,7 +168,6 @@
                     }
                 });
             }
-        });
     </script>
 
 

@@ -1,6 +1,5 @@
 <!-- resources/views/cart/index.blade.php -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <x-guest-layout>
 
     <section class="flex items-center bg-stone-200 lg:h-screen font-poppins dark:bg-gray-900">
@@ -117,14 +116,12 @@
                                 </a>
                             </div>
                             <div class="flex items-center justify-between">
-                               
-
                                 <form action="{{route('session')}}" method="POST">
                                     @csrf
                                     @method('POST')
-                                    <input name="orderTotal"   type="text"  >
-                                    <button type="submit"
-                                    class="block w-full py-4 font-bold text-center text-gray-100 uppercase bg-red-500 rounded-md hover:bg-red-600">
+                                    <input name="orderTotal"   type="text" hidden >
+                                    <button type="submit" style="width: 15rem;                                    "
+                                    class="block  py-4  font-bold text-center text-gray-100 uppercase bg-red-500 rounded-md hover:bg-red-600">
                                     Checkout
                                 </button>
                                 </form>

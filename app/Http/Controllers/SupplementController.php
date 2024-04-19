@@ -28,12 +28,10 @@ class SupplementController extends Controller
     
     public function filter(Request $request)
     {
-        // Retrieve filter values from the request
         $category = $request->input('category');
         $name = $request->input('name');
         $price = $request->input('price');
 
-        // Query products table based on filter values
         $query = Product::query();
 
         if ($category) {
@@ -48,10 +46,8 @@ class SupplementController extends Controller
             $query->where('price', '<=', $price);
         }
 
-        // Retrieve filtered products
         $filteredProducts = $query->get();
 
-        // Return filtered products as JSON data
         return response()->json($filteredProducts);
     }
 

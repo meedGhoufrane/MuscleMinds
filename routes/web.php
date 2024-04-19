@@ -139,7 +139,7 @@
 
 
     //filter 
-    Route::get('/products/filter', [SupplementController::class, 'filter'])->name('filter');
+    Route::get('/filter', [SupplementController::class, 'filter'])->name('filter');
     
 
     //profile 
