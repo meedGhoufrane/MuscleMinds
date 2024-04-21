@@ -75,7 +75,7 @@
                                     <p class="text-gray-800 font-bold">$${product.price}</p>
                                 </div>
                             </div>
-                        `;
+                        `; 
                                         grid.insertAdjacentHTML('beforeend', card);
                                     });
                                 } else {
