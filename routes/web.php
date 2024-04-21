@@ -1,5 +1,6 @@
     <?php
 
+    use App\Http\Controllers\AthleteController;
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\BrandController;
     use App\Http\Controllers\CartController;
@@ -45,9 +46,9 @@
 
 
    // routes for view Athletes
-    Route::get('/athletes', function () {
+    Route::get('/athletessp', function () {
         return view('athletes');
-    })->name('athletes');
+    })->name('athletessp');
     
    
     
@@ -153,3 +154,18 @@
     Route::get('/checkout', 'App\Http\Controllers\StripeController@checkout')->name('checkout');
     Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
     Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
+
+
+
+    // Athlete
+    Route::prefix('athletes')->group(function () {
+        Route::get('/', [AthleteController::class, 'index'])->name('athletes.index');
+        Route::get('/create', [AthleteController::class, 'create'])->name('athletes.create');
+        Route::post('/', [AthleteController::class, 'store'])->name('athletes.store');
+        Route::delete('/{id}', [AthleteController::class, 'destroy'])->name('athletes.destroy');
+        Route::get('/{athlete}/edit', [AthleteController::class, 'edit'])->name('athletes.edit');
+        Route::put('/{athlete}', [AthleteController::class, 'update'])->name('athletes.update');
+    });
+    
+
+    Route::get('/athletessp', [AthleteController::class, 'indexgfetchall'])->name('athletessp');

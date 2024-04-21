@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Contracts\AthleteRepositoryInterface;
+use App\Repositories\AthleteRepository;
 use App\Repositories\BrandRepository;
 use App\Repositories\BrandRepositoryInterface;
 use App\Repositories\UserRepository;
@@ -17,6 +19,7 @@ use App\View\Components\AppLayout;
 use App\View\Components\GuestLayout;
 use Illuminate\Support\Facades\Blade;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -29,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
         $this->app->bind(WishlistRepositoryInterface::class, WishlistRepository::class);
         $this->app->bind(BrandRepositoryInterface::class, BrandRepository::class);
+        $this->app->bind(AthleteRepositoryInterface::class, AthleteRepository::class);
 
     }
 
