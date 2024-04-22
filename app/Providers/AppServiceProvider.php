@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
-use App\Repositories\Contracts\AthleteRepositoryInterface;
+
 use App\Repositories\AthleteRepository;
 use App\Repositories\BrandRepository;
 use App\Repositories\BrandRepositoryInterface;
+use App\Repositories\Contracts\AthleteRepositoryInterface;
 use App\Repositories\UserRepository;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;

@@ -157,15 +157,3 @@
 
 
 
-    // Athlete
-    Route::prefix('athletes')->group(function () {
-        Route::get('/', [AthleteController::class, 'index'])->name('athletes.index');
-        Route::get('/create', [AthleteController::class, 'create'])->name('athletes.create');
-        Route::post('/', [AthleteController::class, 'store'])->name('athletes.store');
-        Route::delete('/{id}', [AthleteController::class, 'destroy'])->name('athletes.destroy');
-        Route::get('/{athlete}/edit', [AthleteController::class, 'edit'])->name('athletes.edit');
-        Route::put('/{athlete}', [AthleteController::class, 'update'])->name('athletes.update');
-    });
-    
-
-    Route::get('/athletessp', [AthleteController::class, 'indexgfetchall'])->name('athletessp');
