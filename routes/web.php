@@ -1,9 +1,10 @@
     <?php
 
-    use App\Http\Controllers\AthleteController;
+    use App\Http\Controllers\OrderController;
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\BrandController;
     use App\Http\Controllers\CartController;
+    use App\Http\Controllers\DashboradController;
     use App\Http\Controllers\StripeController;
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\UserController;
@@ -29,18 +30,15 @@
     */
 
 
+    Route::get('/', [DashboradController::class, 'index'])->name('dashboard');
 
-        
-    // Route::get('/', function () {
-    //     return view('admin.dashboard');
-    // });
 
          
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('welcome');
+    // Route::get('/', function () {
+    //     return view('welcome');
+    // })->name('welcome');
     
-    Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+    // Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
  
 
@@ -148,12 +146,17 @@
 
 
     //checkout
-
     // Route::get('/stripe/checkout', [StripeController::class, 'checkout'])->name('stripe.checkout');
-
     Route::get('/checkout', 'App\Http\Controllers\StripeController@checkout')->name('checkout');
     Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
     Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
+
+
+    // orders
+    // routes/web.php
+
+
+    Route::get('/admin/orders', [OrderController::class, 'index'])->name('admin.orders.index');
 
 
 

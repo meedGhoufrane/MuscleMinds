@@ -42,6 +42,41 @@
                                 <p class="px-4 py-2">No products in your wishlist.</p>
                             @endforelse
                         </div>
+                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <h2 class="text-lg font-semibold text-gray-800">Orders</h2>
+                        </div>
+                        <div class="px-4 py-5 sm:px-6">
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">name</th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Status</th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subtotal</th>
+                                            <!-- Add more table headers if needed -->
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        @forelse ($userOrders as $order)
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">{{ $order->user->name }}</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">{{ $order->order_status }}</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">{{ $order->sub_total }}</td>
+                                                <!-- Add more table cells for other order details -->
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap" colspan="2">No orders found.</td>
+                                                <!-- Adjust colspan based on the number of columns in the table -->
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+
+                        
                     </dl>
                 </div>
             </div>

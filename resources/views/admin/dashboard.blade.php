@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<!--
-Template Name: NobleUI - HTML Bootstrap 5 Admin Dashboard Template
-Author: NobleUI
-Website: https://www.nobleui.com
-Portfolio: https://themeforest.net/user/nobleui/portfolio
-Contact: nobleui123@gmail.com
-Purchase: https://1.envato.market/nobleui_admin
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
+
 <html lang="en">
 
 <head>
@@ -81,40 +73,13 @@ License: For each use you must have a valid license purchased only from above li
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between align-items-baseline">
-                                                <h6 class="card-title mb-0">New Customers</h6>
+                                                <h6 class="card-title mb-0"> users</h6>
                                                 <div class="dropdown mb-2">
-                                                    <a type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        <i class="icon-lg text-muted pb-3px"
-                                                            data-feather="more-horizontal"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="eye"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">View</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="edit-2"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Edit</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="trash"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Delete</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="printer"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Print</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="download"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Download</span></a>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6 col-md-12 col-xl-5">
-                                                    <h3 class="mb-2">3,897</h3>
+                                                    <h3 class="mb-2">{{ $totalUsers }}  </h3>
                                                     <div class="d-flex align-items-baseline">
                                                         <p class="text-success">
                                                             <span>+3.3%</span>
@@ -133,40 +98,11 @@ License: For each use you must have a valid license purchased only from above li
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between align-items-baseline">
-                                                <h6 class="card-title mb-0">New Orders</h6>
-                                                <div class="dropdown mb-2">
-                                                    <a type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        <i class="icon-lg text-muted pb-3px"
-                                                            data-feather="more-horizontal"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="eye"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">View</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="edit-2"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Edit</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="trash"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Delete</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="printer"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Print</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="download"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Download</span></a>
-                                                    </div>
-                                                </div>
+                                                <h6 class="card-title mb-0">Orders</h6>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6 col-md-12 col-xl-5">
-                                                    <h3 class="mb-2">35,084</h3>
+                                                    <h3 class="mb-2">{{ $totalOrders }}   </h3>
                                                     <div class="d-flex align-items-baseline">
                                                         <p class="text-danger">
                                                             <span>-2.8%</span>
@@ -185,40 +121,12 @@ License: For each use you must have a valid license purchased only from above li
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between align-items-baseline">
-                                                <h6 class="card-title mb-0">Growth</h6>
-                                                <div class="dropdown mb-2">
-                                                    <a type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        <i class="icon-lg text-muted pb-3px"
-                                                            data-feather="more-horizontal"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="eye"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">View</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="edit-2"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Edit</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="trash"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Delete</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="printer"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Print</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="javascript:;"><i data-feather="download"
-                                                                class="icon-sm me-2"></i> <span
-                                                                class="">Download</span></a>
-                                                    </div>
-                                                </div>
+                                                <h6 class="card-title mb-0">Products</h6>
+                                               
                                             </div>
                                             <div class="row">
                                                 <div class="col-6 col-md-12 col-xl-5">
-                                                    <h3 class="mb-2">89.87%</h3>
+                                                    <h3 class="mb-2">  {{ $totalProducts }} </h3>
                                                     <div class="d-flex align-items-baseline">
                                                         <p class="text-success">
                                                             <span>+2.8%</span>
