@@ -1,7 +1,9 @@
 <?php 
  
 namespace App\Http\Controllers;
- 
+
+use App\Models\Order;
+use App\Models\Cart;
 use Illuminate\Http\Request;
  
 class StripeController extends Controller
@@ -64,15 +66,27 @@ class StripeController extends Controller
 
 public function success(Request $request)
 {
-    // Clear the cart after successful payment
-    $request->session()->forget('cart');
+    $cartItems = auth()->user()->cart;
 
-    // Redirect to the welcome page
+    if ($cartItems) {
+        $subTotal = 0;
+        foreach ($cartItems as $cartItem) {
+            $subTotal += $cartItem->product->price * $cartItem->quantity;
+        }
+
+        $order = new Order();
+        $order->sub_total = $subTotal;
+        $order->user_id = auth()->id();
+        $order->order_status = 'completed'; 
+        $order->save();
+
+        Cart::where('user_id',auth()->id())->delete();
+    } else {
+
+        return redirect()->route('cart.index')->with('error', 'No items found in the cart.');
+    }
+    
     return redirect()->route('welcome');
 }
-
-    
-
-    
 
 }

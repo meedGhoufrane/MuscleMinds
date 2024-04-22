@@ -65,15 +65,10 @@
                                 </button>
                             </div>
                             <hr class="mb-6 border-t" />
+                           
                             <div class="text-center">
                                 <a class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                                    href="#">
-                                    Forgot Password?
-                                </a>
-                            </div>
-                            <div class="text-center">
-                                <a class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                                    href="./index.html">
+                                    href="{{ route('login') }}">
                                     Already have an account? Login!
                                 </a>
                             </div>
