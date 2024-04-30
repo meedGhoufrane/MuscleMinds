@@ -66,7 +66,6 @@
         <img alt="" src="{{ asset('images/cbum.jpg') }}" class="absolute inset-0 h-full w-full object-cover" />
     </div>
 
-    <!-- Add a link for password reset -->
 
 </section>
 </x-guest-layout>

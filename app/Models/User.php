@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     /**
@@ -57,4 +58,32 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Wishlist::class);
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function getRole($role){
+
+        return Role::where('name',$role)->first();
+
+    }
+
+    public function assigneRole($role){
+        $role = $this->getRole($role);
+        if ($role) {
+            $this->role_id = $role->id;
+            $this->save();
+            return $this;
+        }else{
+            return false;
+        }
+    }
+    public function hasRole($role){
+        return   $this->role->name == $role;
+    }
+    
+
+    
 }

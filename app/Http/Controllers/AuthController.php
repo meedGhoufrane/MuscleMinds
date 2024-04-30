@@ -20,7 +20,7 @@ use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
-    protected $userRepository;
+    protected $userRepository; 
 
     public function __construct(UserRepositoryInterface $userRepository)
     {
@@ -54,6 +54,10 @@ class AuthController extends Controller
         if ($user && Hash::check($credentials['password'], $user->password)) {
             Auth::login($user);
             $request->session()->regenerate();
+         if($user->hasRole('admin')){
+            return redirect()->route('dashboard')->with('success', 'You have been logged in successfully!');
+        
+         }
             return redirect()->intended('/')->with('success', 'You have been logged in successfully!');
         }
 
@@ -69,8 +73,8 @@ class AuthController extends Controller
         $user = $this->userRepository->create($data);
         
         if ($user) {
-
             Auth::login($user);
+            $user->assigneRole('user');
             return redirect('/')->with('success', 'Registration successful!');
         } else {
             return back()->with('error', 'Registration failed. Please try again.');
@@ -119,7 +123,7 @@ class AuthController extends Controller
         $request->only('email', 'password', 'password_confirmation', 'token'),
         function ($user, $password) {
             $user->password = Hash::make($password);
-            $user->setRememberToken(Str::random(60)); // Update remember token
+            $user->setRememberToken(Str::random(60)); 
             $user->save();
         }
     );

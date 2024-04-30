@@ -2,22 +2,17 @@
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <section class="bg-gray-800 text-white relative">
-        <!-- Swiper Container -->
         <div class="swiper-container" style="width: 100%; height: 100%;">
-            <!-- Swiper Wrapper -->
             <div class="swiper-wrapper" id="swiper-wrapper">
-                <!-- Swiper will dynamically populate this section -->
                 <div class="swiper-slide"><img src="{{ asset('images/raw-nutrition-2023.webp') }}" style="height: 40rem" alt="Raw Nutrition"
                         class="w-full  object-cover swiper-image" style="height: 53rem"></div>
                 <div class="swiper-slide"><img src="{{ asset('images/product-jpeg.jpg') }}" style="height: 40rem" alt="Product JPEG"
                         class="w-full  object-cover swiper-image " style="height: 53rem"></div>
-                <div class="swiper-slide"><img src="{{ asset('images/all-new-muscletech.jpg') }}"
+                <div class="swiper-slide"><img src="{{ asset('images/hlt-primary.jpeg') }}"
                         alt="All New Muscletech" class=" w-full  object-cover swiper-image" style="height: 40rem"></div>
             </div>
-            <!-- Add Pagination -->
         </div>
 
-        <!-- Shop Now Button -->
         <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
             <div class="max-w-4xl mx-auto relative z-10">
                 <a href="{{ route('supplement') }}"

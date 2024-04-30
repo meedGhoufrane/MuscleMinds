@@ -21,7 +21,6 @@ class CartController extends Controller
         $cart->quantity = $request->quantity; 
         $cart->save();
     
-        // Provide feedback to the user
         return response()->json(['success' => 'Product added to cart successfully']);
     }
     
@@ -35,14 +34,9 @@ class CartController extends Controller
 
     public function destroy($id)
     {
-        // Find the cart item by ID
         $cartItem = Cart::findOrFail($id);
-
-        // Delete the cart item
         $cartItem->delete();
 
         return response()->json(['message' => 'Product deleted from cart successfully']);
     }
-
-
 }

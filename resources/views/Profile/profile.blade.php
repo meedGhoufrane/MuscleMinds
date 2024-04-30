@@ -15,14 +15,12 @@
                             <dt class="text-sm font-medium text-gray-500">Email</dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-2">{{ auth()->user()->email }}</dd>
                         </div>
-                        <!-- Add more profile information as needed -->
 
                         <!-- Wishlist Products -->
                         <div class="bg-gray-50 px-4 py-5 sm:px-6">
                             <h2 class="text-lg font-semibold text-gray-800">Wishlist Products</h2>
                         </div>
                         <div class="px-4 py-5 sm:px-6">
-                            <!-- Loop through wishlist products and display each one -->
                             @forelse ($wishlistProducts as $product)
                                 <div class="flex items-center justify-between py-2 border-b border-gray-200">
                                     <div class="flex items-center space-x-4">
@@ -53,7 +51,6 @@
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">name</th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order Status</th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subtotal</th>
-                                            <!-- Add more table headers if needed -->
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
@@ -61,13 +58,11 @@
                                             <tr>
                                                 <td class="px-6 py-4 whitespace-nowrap">{{ $order->user->name }}</td>
                                                 <td class="px-6 py-4 whitespace-nowrap">{{ $order->order_status }}</td>
-                                                <td class="px-6 py-4 whitespace-nowrap">{{ $order->sub_total }}</td>
-                                                <!-- Add more table cells for other order details -->
+                                                <td class="px-6 py-4 whitespace-nowrap">${{ $order->sub_total }}</td>
                                             </tr>
                                         @empty
                                             <tr>
                                                 <td class="px-6 py-4 whitespace-nowrap" colspan="2">No orders found.</td>
-                                                <!-- Adjust colspan based on the number of columns in the table -->
                                             </tr>
                                         @endforelse
                                     </tbody>

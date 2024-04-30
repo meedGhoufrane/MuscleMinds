@@ -63,7 +63,7 @@
                 $('.add-to-cart-btn').click(function(e) {
                     e.preventDefault();
                     var productId = $(this).data('product-id');
-                    var quantity = $('#quantity-input').val(); // Get the quantity value
+                    var quantity = $('#quantity-input').val(); 
                     addToCart(productId, quantity);
                 });
 
@@ -74,10 +74,9 @@
                         data: {
                             '_token': '{{ csrf_token() }}',
                             'product_id': productId,
-                            'quantity': quantity // Pass the quantity to the controller
+                            'quantity': quantity 
                         },
                         success: function(response) {
-                            // Show success message
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Product added to cart',
@@ -89,7 +88,7 @@
                             // Show error message
                             Swal.fire({
                                 icon: 'error',
-                                title: 'Failed to add product to cart u should do login ',
+                                title: 'Failed to add product to  ur cart should do login ',
                                 text: 'An error occurred while trying to add the product to the cart.'
                             });
                         }

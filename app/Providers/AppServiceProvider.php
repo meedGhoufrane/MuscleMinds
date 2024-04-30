@@ -33,7 +33,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
         $this->app->bind(WishlistRepositoryInterface::class, WishlistRepository::class);
         $this->app->bind(BrandRepositoryInterface::class, BrandRepository::class);
-        $this->app->bind(AthleteRepositoryInterface::class, AthleteRepository::class);
 
     }
 

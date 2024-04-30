@@ -11,18 +11,15 @@ class DashboradController extends Controller
 {
     public function index()
     {
-        // Total number of users
         $totalUsers = User::count();
     
-        // Total number of orders
         $totalOrders = Order::count();
     
-        // Total number of products
         $totalProducts = Product::count();
     
         return view('admin.dashboard', compact('totalUsers', 'totalOrders', 'totalProducts'));
     }
     
     
-
+   
 }

@@ -30,15 +30,15 @@
     */
 
 
-    Route::get('/', [DashboradController::class, 'index'])->name('dashboard');
+    Route::get('/dashborad', [DashboradController::class, 'index'])->name('dashboard')->middleware('role:admin');
 
 
          
-    // Route::get('/', function () {
-    //     return view('welcome');
-    // })->name('welcome');
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('welcome');
     
-    // Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+    Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
  
 
@@ -56,7 +56,7 @@
     Route::post('/login', [AuthController::class,'login'])->name('newlogin');
 
     Route::post('/logout', [AuthController::class,'logout'])->name('logout')->middleware('auth');
-    Route::get('/dashboard', function () {return view('dashboard');})->middleware('auth');
+    Route::get('/statistic', function () {return view('dashboard');})->middleware('auth','role:admin');
     Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
     Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
     Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
