@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 
 class BrandController extends Controller
-{
+{ 
     protected $brandRepository;
 
     public function __construct(BrandRepositoryInterface $brandRepository)
